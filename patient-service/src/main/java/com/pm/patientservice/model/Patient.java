@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -12,7 +13,9 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
+@Table(name = "patient")
 @Data
+@NoArgsConstructor
 public class Patient {
 
     @Id
@@ -28,18 +31,20 @@ public class Patient {
     private String email;
 
     @NotNull
-    private String address;
-
-    @NotNull
     private LocalDate dateOfBirth;
 
     @NotNull
     private LocalDate registeredDate;
 
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true, optional = false)
+    @JoinColumn(name = "address_id", referencedColumnName = "id")
+    private Address address;
+
     @CreationTimestamp
-    private LocalDateTime createdAt = LocalDateTime.now();
+    @Column(updatable = false)
+    private LocalDateTime created = LocalDateTime.now();
 
     @UpdateTimestamp
-    private LocalDateTime updatedAt;
+    private LocalDateTime updated;
 
 }
