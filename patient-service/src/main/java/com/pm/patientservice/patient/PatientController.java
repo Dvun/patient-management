@@ -1,9 +1,8 @@
-package com.pm.patientservice.controller;
+package com.pm.patientservice.patient;
 
-import com.pm.patientservice.dto.patient.PatientRequestDto;
-import com.pm.patientservice.dto.patient.PatientResponseDto;
-import com.pm.patientservice.service.PatientService;
-import com.pm.patientservice.utils.ApiResponse;
+import com.pm.patientservice.patient.dto.PatientRequestDto;
+import com.pm.patientservice.patient.dto.PatientResponseDto;
+import com.pm.patientservice.common.ApiResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

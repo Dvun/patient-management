@@ -1,13 +1,11 @@
-package com.pm.patientservice.service.impl;
+package com.pm.patientservice.patient;
 
-import com.pm.patientservice.dto.patient.PatientRequestDto;
-import com.pm.patientservice.dto.patient.PatientResponseDto;
-import com.pm.patientservice.exception.EmailAlreadyExistsException;
-import com.pm.patientservice.exception.NotFoundException;
-import com.pm.patientservice.mapper.PatientMapper;
-import com.pm.patientservice.model.Patient;
-import com.pm.patientservice.repository.PatientRepository;
-import com.pm.patientservice.service.PatientService;
+import com.pm.patientservice.patient.dto.PatientRequestDto;
+import com.pm.patientservice.patient.dto.PatientResponseDto;
+import com.pm.patientservice.common.exception.EmailAlreadyExistsException;
+import com.pm.patientservice.common.exception.NotFoundException;
+import com.pm.patientservice.patient.mapper.PatientMapper;
+import com.pm.patientservice.entity.Patient;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

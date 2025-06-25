@@ -1,6 +1,6 @@
-package com.pm.patientservice.dto.patient;
+package com.pm.patientservice.patient.dto;
 
-import com.pm.patientservice.model.Address;
+import com.pm.patientservice.entity.Address;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

@@ -1,6 +1,6 @@
-package com.pm.patientservice.dto.patient;
+package com.pm.patientservice.patient.dto;
 
-import com.pm.patientservice.model.Address;
+import com.pm.patientservice.entity.Address;
 import lombok.Data;
 
 import java.time.LocalDate;

@@ -1,6 +1,6 @@
-package com.pm.patientservice.exception;
+package com.pm.patientservice.common.exception;
 
-import com.pm.patientservice.utils.ApiResponse;
+import com.pm.patientservice.common.ApiResponse;
 import jakarta.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,8 +1,8 @@
-package com.pm.patientservice.mapper;
+package com.pm.patientservice.patient.mapper;
 
-import com.pm.patientservice.dto.patient.PatientRequestDto;
-import com.pm.patientservice.dto.patient.PatientResponseDto;
-import com.pm.patientservice.model.Patient;
+import com.pm.patientservice.patient.dto.PatientRequestDto;
+import com.pm.patientservice.patient.dto.PatientResponseDto;
+import com.pm.patientservice.entity.Patient;
 
 public class PatientMapper {
 

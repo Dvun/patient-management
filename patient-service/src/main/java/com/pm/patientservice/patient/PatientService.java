@@ -1,7 +1,7 @@
-package com.pm.patientservice.service;
+package com.pm.patientservice.patient;
 
-import com.pm.patientservice.dto.patient.PatientRequestDto;
-import com.pm.patientservice.dto.patient.PatientResponseDto;
+import com.pm.patientservice.patient.dto.PatientRequestDto;
+import com.pm.patientservice.patient.dto.PatientResponseDto;
 import java.util.List;
 import java.util.UUID;
 
