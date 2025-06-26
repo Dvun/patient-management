@@ -5,7 +5,13 @@ Content-Type: application/json
 {
     "name": "Roman Seveljov",
     "email": "roman084@gmx.com",
-    "address": "Tellervonkatu 7, Kerava, 04230",
+  "address": {
+    "street": "Street name street name",
+    "city": "City name",
+    "country": "Country",
+    "phone": "1234567890",
+    "postalCode": "00000"
+  },
     "dateOfBirth": "1984-03-24",
     "registeredDate": "2025-06-24"
 }

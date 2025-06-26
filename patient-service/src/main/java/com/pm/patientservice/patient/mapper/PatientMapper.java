@@ -13,6 +13,8 @@ public interface PatientMapper {
 
     PatientResponseDto toDto(Patient patient);
     Patient toEntity(PatientRequestDto request);
+    PatientResponseDto fromRequestToResponseDto(PatientRequestDto request);
+    PatientRequestDto fromResponseToRequestDto(PatientResponseDto response);
 
     @Mappings({
             @Mapping(target = "id", ignore = true),

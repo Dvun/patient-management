@@ -57,4 +57,10 @@ public class PatientServiceImpl implements PatientService {
         return patientMapper.toDto(existPatient);
     }
 
+    @Override
+    public void deletePatient(UUID id) {
+        PatientResponseDto patient = getPatientById(id);
+        patientRepository.deleteById(patient.id());
+    }
+
 }

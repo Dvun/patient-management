@@ -1,5 +1,6 @@
 package com.pm.patientservice.patient.mapper;
 
+import com.pm.patientservice.address.dto.AddressRequestDto;
 import com.pm.patientservice.address.dto.AddressResponseDto;
 import com.pm.patientservice.address.mapper.AddressMapper;
 import com.pm.patientservice.entity.Address;
@@ -15,7 +16,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2025-06-26T13:59:01+0300",
+    date = "2025-06-26T18:35:34+0300",
     comments = "version: 1.6.3, compiler: javac, environment: Java 21.0.6 (Eclipse Adoptium)"
 )
 @Component
@@ -69,6 +70,54 @@ public class PatientMapperImpl implements PatientMapper {
     }
 
     @Override
+    public PatientResponseDto fromRequestToResponseDto(PatientRequestDto request) {
+        if ( request == null ) {
+            return null;
+        }
+
+        String name = null;
+        String email = null;
+        AddressResponseDto address = null;
+        LocalDate dateOfBirth = null;
+
+        name = request.name();
+        email = request.email();
+        address = addressMapper.toDto( addressMapper.fromRequestToEntity( request.address() ) );
+        dateOfBirth = request.dateOfBirth();
+
+        UUID id = null;
+        LocalDateTime created = null;
+        LocalDateTime updated = null;
+
+        PatientResponseDto patientResponseDto = new PatientResponseDto( id, name, email, address, dateOfBirth, created, updated );
+
+        return patientResponseDto;
+    }
+
+    @Override
+    public PatientRequestDto fromResponseToRequestDto(PatientResponseDto response) {
+        if ( response == null ) {
+            return null;
+        }
+
+        String name = null;
+        String email = null;
+        AddressRequestDto address = null;
+        LocalDate dateOfBirth = null;
+
+        name = response.name();
+        email = response.email();
+        address = addressResponseDtoToAddressRequestDto( response.address() );
+        dateOfBirth = response.dateOfBirth();
+
+        LocalDate registeredDate = null;
+
+        PatientRequestDto patientRequestDto = new PatientRequestDto( name, email, address, dateOfBirth, registeredDate );
+
+        return patientRequestDto;
+    }
+
+    @Override
     public void updateEntity(Patient patient, PatientRequestDto request) {
         if ( request == null ) {
             return;
@@ -92,5 +141,27 @@ public class PatientMapperImpl implements PatientMapper {
             }
             addressMapper.updateDto( patient.getAddress(), request.address() );
         }
+    }
+
+    protected AddressRequestDto addressResponseDtoToAddressRequestDto(AddressResponseDto addressResponseDto) {
+        if ( addressResponseDto == null ) {
+            return null;
+        }
+
+        String street = null;
+        String city = null;
+        String country = null;
+        String phone = null;
+        String postalCode = null;
+
+        street = addressResponseDto.street();
+        city = addressResponseDto.city();
+        country = addressResponseDto.country();
+        phone = addressResponseDto.phone();
+        postalCode = addressResponseDto.postalCode();
+
+        AddressRequestDto addressRequestDto = new AddressRequestDto( street, city, country, phone, postalCode );
+
+        return addressRequestDto;
     }
 }
