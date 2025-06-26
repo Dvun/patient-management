@@ -1,0 +1,19 @@
+### PUT update an existing patient data
+PUT http://localhost:4000/api/patient/223e4567-e89b-12d3-a456-426614174014
+Content-Type: application/json
+
+{
+    "name": "Full name full name",
+    "email": "example@mail.com",
+    "address": {
+      "street": "Street name street name",
+      "city": "City name",
+      "country": "Country",
+      "phone": "1234567890",
+      "postalCode": "00000"
+    },
+    "dateOfBirth": "1984-03-24",
+    "registeredDate": "2025-06-24"
+}
+
+###

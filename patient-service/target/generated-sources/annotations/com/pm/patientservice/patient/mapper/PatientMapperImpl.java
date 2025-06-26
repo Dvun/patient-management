@@ -1,17 +1,21 @@
 package com.pm.patientservice.patient.mapper;
 
+import com.pm.patientservice.address.dto.AddressResponseDto;
 import com.pm.patientservice.address.mapper.AddressMapper;
 import com.pm.patientservice.entity.Address;
 import com.pm.patientservice.entity.Patient;
 import com.pm.patientservice.patient.dto.PatientRequestDto;
 import com.pm.patientservice.patient.dto.PatientResponseDto;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.UUID;
 import javax.annotation.processing.Generated;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2025-06-26T09:45:46+0300",
+    date = "2025-06-26T13:59:01+0300",
     comments = "version: 1.6.3, compiler: javac, environment: Java 21.0.6 (Eclipse Adoptium)"
 )
 @Component
@@ -26,15 +30,23 @@ public class PatientMapperImpl implements PatientMapper {
             return null;
         }
 
-        PatientResponseDto patientResponseDto = new PatientResponseDto();
+        UUID id = null;
+        String name = null;
+        String email = null;
+        AddressResponseDto address = null;
+        LocalDate dateOfBirth = null;
+        LocalDateTime created = null;
+        LocalDateTime updated = null;
 
-        patientResponseDto.setId( patient.getId() );
-        patientResponseDto.setName( patient.getName() );
-        patientResponseDto.setEmail( patient.getEmail() );
-        patientResponseDto.setAddress( addressMapper.toDto( patient.getAddress() ) );
-        patientResponseDto.setDateOfBirth( patient.getDateOfBirth() );
-        patientResponseDto.setCreated( patient.getCreated() );
-        patientResponseDto.setUpdated( patient.getUpdated() );
+        id = patient.getId();
+        name = patient.getName();
+        email = patient.getEmail();
+        address = addressMapper.toDto( patient.getAddress() );
+        dateOfBirth = patient.getDateOfBirth();
+        created = patient.getCreated();
+        updated = patient.getUpdated();
+
+        PatientResponseDto patientResponseDto = new PatientResponseDto( id, name, email, address, dateOfBirth, created, updated );
 
         return patientResponseDto;
     }
@@ -47,11 +59,11 @@ public class PatientMapperImpl implements PatientMapper {
 
         Patient patient = new Patient();
 
-        patient.setName( request.getName() );
-        patient.setEmail( request.getEmail() );
-        patient.setDateOfBirth( request.getDateOfBirth() );
-        patient.setRegisteredDate( request.getRegisteredDate() );
-        patient.setAddress( addressMapper.fromRequestToEntity( request.getAddress() ) );
+        patient.setName( request.name() );
+        patient.setEmail( request.email() );
+        patient.setDateOfBirth( request.dateOfBirth() );
+        patient.setRegisteredDate( request.registeredDate() );
+        patient.setAddress( addressMapper.fromRequestToEntity( request.address() ) );
 
         return patient;
     }
@@ -62,23 +74,23 @@ public class PatientMapperImpl implements PatientMapper {
             return;
         }
 
-        if ( request.getName() != null ) {
-            patient.setName( request.getName() );
+        if ( request.name() != null ) {
+            patient.setName( request.name() );
         }
-        if ( request.getEmail() != null ) {
-            patient.setEmail( request.getEmail() );
+        if ( request.email() != null ) {
+            patient.setEmail( request.email() );
         }
-        if ( request.getDateOfBirth() != null ) {
-            patient.setDateOfBirth( request.getDateOfBirth() );
+        if ( request.dateOfBirth() != null ) {
+            patient.setDateOfBirth( request.dateOfBirth() );
         }
-        if ( request.getRegisteredDate() != null ) {
-            patient.setRegisteredDate( request.getRegisteredDate() );
+        if ( request.registeredDate() != null ) {
+            patient.setRegisteredDate( request.registeredDate() );
         }
-        if ( request.getAddress() != null ) {
+        if ( request.address() != null ) {
             if ( patient.getAddress() == null ) {
                 patient.setAddress( new Address() );
             }
-            addressMapper.updateDto( patient.getAddress(), request.getAddress() );
+            addressMapper.updateDto( patient.getAddress(), request.address() );
         }
     }
 }

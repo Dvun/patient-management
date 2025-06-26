@@ -18,7 +18,6 @@ public interface PatientMapper {
             @Mapping(target = "id", ignore = true),
             @Mapping(target = "created", ignore = true),
             @Mapping(target = "updated", ignore = true),
-//            @Mapping(target = "address", source = "address")
     })
     @BeanMapping(nullValuePropertyMappingStrategy = IGNORE)
     void updateEntity(@MappingTarget Patient patient, PatientRequestDto request);
