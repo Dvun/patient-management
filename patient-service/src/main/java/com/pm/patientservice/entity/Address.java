@@ -2,7 +2,9 @@ package com.pm.patientservice.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Pattern;
+import lombok.AccessLevel;
 import lombok.Data;
+import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -16,6 +18,7 @@ public class Address {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Setter(AccessLevel.NONE)
     private UUID id;
 
     private String street;
@@ -26,11 +29,6 @@ public class Address {
     @Column(name = "postal_code", length = 5, nullable = false)
     @Pattern(regexp = "\\d{5}", message = "Postal code must be exactly 5 digits")
     private String postalCode;
-
-
-    @OneToOne(mappedBy = "address")
-    @JoinColumn(name = "patient_id")
-    private Patient patient;
 
     @CreationTimestamp
     private LocalDateTime created = LocalDateTime.now();

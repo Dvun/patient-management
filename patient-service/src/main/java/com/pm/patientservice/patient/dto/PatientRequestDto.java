@@ -1,6 +1,6 @@
 package com.pm.patientservice.patient.dto;
 
-import com.pm.patientservice.entity.Address;
+import com.pm.patientservice.address.dto.AddressRequestDto;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -20,7 +20,7 @@ public class PatientRequestDto {
     @Email(message = "Email should be valid!")
     private String email;
 
-    private Address address;
+    private AddressRequestDto address;
 
     @NotNull(message = "Date of birth is required!")
     private LocalDate dateOfBirth;

@@ -1,31 +1,26 @@
 package com.pm.patientservice.patient.mapper;
 
+import com.pm.patientservice.address.mapper.AddressMapper;
 import com.pm.patientservice.patient.dto.PatientRequestDto;
 import com.pm.patientservice.patient.dto.PatientResponseDto;
 import com.pm.patientservice.entity.Patient;
+import org.mapstruct.*;
 
-public class PatientMapper {
+import static org.mapstruct.NullValuePropertyMappingStrategy.IGNORE;
 
-    public static PatientResponseDto toDto(Patient patient) {
-        PatientResponseDto dto = new PatientResponseDto();
-        dto.setId(patient.getId());
-        dto.setName(patient.getName());
-        dto.setAddress(patient.getAddress());
-        dto.setEmail(patient.getEmail());
-        dto.setDateOfBirth(patient.getDateOfBirth());
-        dto.setCreated(patient.getCreated());
-        dto.setUpdated(patient.getUpdated());
-        return dto;
-    }
+@Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE, uses = AddressMapper.class)
+public interface PatientMapper {
 
-    public static Patient toEntity(PatientRequestDto dto) {
-        Patient patient = new Patient();
-        patient.setName(dto.getName());
-        patient.setAddress(dto.getAddress());
-        patient.setEmail(dto.getEmail());
-        patient.setDateOfBirth(dto.getDateOfBirth());
-        patient.setRegisteredDate(dto.getRegisteredDate());
-        return patient;
-    }
+    PatientResponseDto toDto(Patient patient);
+    Patient toEntity(PatientRequestDto request);
+
+    @Mappings({
+            @Mapping(target = "id", ignore = true),
+            @Mapping(target = "created", ignore = true),
+            @Mapping(target = "updated", ignore = true),
+//            @Mapping(target = "address", source = "address")
+    })
+    @BeanMapping(nullValuePropertyMappingStrategy = IGNORE)
+    void updateEntity(@MappingTarget Patient patient, PatientRequestDto request);
 
 }

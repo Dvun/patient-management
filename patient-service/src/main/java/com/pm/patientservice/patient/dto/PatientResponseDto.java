@@ -1,6 +1,6 @@
 package com.pm.patientservice.patient.dto;
 
-import com.pm.patientservice.entity.Address;
+import com.pm.patientservice.address.dto.AddressResponseDto;
 import lombok.Data;
 
 import java.time.LocalDate;
@@ -13,7 +13,7 @@ public class PatientResponseDto {
     private UUID id;
     private String name;
     private String email;
-    private Address address;
+    private AddressResponseDto address;
     private LocalDate dateOfBirth;
     private LocalDateTime created;
     private LocalDateTime updated;
