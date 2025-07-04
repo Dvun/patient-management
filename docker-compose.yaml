@@ -1,0 +1,59 @@
+services:
+
+  db:
+    container_name: patient-service-db
+    image: postgres:alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: patient-service
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - patient-service-data:/var/lib/postgresql/data
+    networks:
+      - patient-service-network
+    restart: unless-stopped
+
+  patient-service:
+    container_name: patient-service
+    image: patient-service:latest
+    build:
+      context: ./patient-service
+    environment:
+      SPRING_DATASOURCE_PASSWORD: postgres
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/patient-service
+      SPRING_DATASOURCE_DRIVER_CLASS_NAME: org.postgresql.Driver
+      SPRING_SQL_INIT_MODE: always
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+    ports:
+      - "4000:4000"
+    depends_on:
+      - db
+    networks:
+      - patient-service-network
+    restart: unless-stopped
+
+  billing-service:
+    container_name: billing-service
+    image: billing-service:latest
+    build:
+      context: ./billing-service
+    ports:
+      - "4001:4001"
+      - "9001:9001"
+    depends_on:
+      - db
+    networks:
+      - patient-service-network
+    restart: unless-stopped
+
+
+volumes:
+  patient-service-data:
+
+networks:
+  patient-service-network:
+    driver: bridge
