@@ -16,3 +16,9 @@
 /Users/roman/workspace/patient-management/patient-service/src/main/java/com/pm/patientservice/patient/dto/PatientRequestDto.java
 /Users/roman/workspace/patient-management/patient-service/src/main/java/com/pm/patientservice/patient/dto/PatientResponseDto.java
 /Users/roman/workspace/patient-management/patient-service/src/main/java/com/pm/patientservice/patient/mapper/PatientMapper.java
+/Users/roman/workspace/patient-management/patient-service/target/generated-sources/protobuf/grpc-java/billing/BillingServiceGrpc.java
+/Users/roman/workspace/patient-management/patient-service/target/generated-sources/protobuf/java/billing/BillingRequest.java
+/Users/roman/workspace/patient-management/patient-service/target/generated-sources/protobuf/java/billing/BillingRequestOrBuilder.java
+/Users/roman/workspace/patient-management/patient-service/target/generated-sources/protobuf/java/billing/BillingResponse.java
+/Users/roman/workspace/patient-management/patient-service/target/generated-sources/protobuf/java/billing/BillingResponseOrBuilder.java
+/Users/roman/workspace/patient-management/patient-service/target/generated-sources/protobuf/java/billing/BillingServiceOuterClass.java
