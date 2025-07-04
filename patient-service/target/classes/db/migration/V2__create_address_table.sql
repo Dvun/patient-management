@@ -17,11 +17,12 @@ ALTER TABLE patient
 
 -- 2. внешний ключ
 ALTER TABLE patient
-    ADD CONSTRAINT IF NOT EXISTS fk_patient_address
-    FOREIGN KEY (address_id) REFERENCES address(id)
+    ADD CONSTRAINT fk_patient_address
+    FOREIGN KEY (address_id)
+        REFERENCES address(id)
     ON DELETE CASCADE;
 
 -- 3. уникальное ограничение, чтобы было one-to-one
 ALTER TABLE patient
-    ADD CONSTRAINT IF NOT EXISTS uq_patient_address
+    ADD CONSTRAINT uq_patient_address
     UNIQUE (address_id);

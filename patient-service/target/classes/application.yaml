@@ -1,24 +1,28 @@
 spring:
   application:
     name: patient-service
-  h2:
-    console:
-      path: /h2-console
-  datasource:
-    url: jdbc:h2:mem:test;DATABASE_TO_UPPER=false;DB_CLOSE_ON_EXIT=false
-    username: admin
-    password: password
-    driver-class-name: org.h2.Driver
-  jpa:
-    hibernate:
-      ddl-auto: none
-    open-in-view: false
-  sql:
-    init:
-      mode: always
-  flyway:
-    enabled: true
+#  h2:
+#    console:
+#      path: /h2-console
+#  datasource:
+#    url: jdbc:h2:mem:test;DATABASE_TO_UPPER=false;DB_CLOSE_ON_EXIT=false
+#    username: admin
+#    password: password
+#    driver-class-name: org.h2.Driver
+#  jpa:
+#    hibernate:
+#      ddl-auto: none
+#    open-in-view: false
+#  sql:
+#    init:
+#      mode: always
+#  flyway:
+#    enabled: true
 
 
 server:
   port: 4000
+
+logging:
+  level:
+    root: info
